@@ -1,0 +1,17 @@
+GATARIA — GERADOR DE MOCKUPS DTF
+
+COMO USAR
+1. Abra o arquivo index.html no navegador.
+2. Carregue sua arte em PNG, JPG ou WEBP.
+3. Escolha frente ou costas e a cor da camiseta.
+4. Ajuste posição, tamanho, rotação, textura e opacidade.
+5. Escolha o fundo e clique em "Baixar mockup em alta".
+
+NOVOS FUNDOS PARA CAMISETA PRETA
+- Rock Prata: palco claro com fumaça branca e luz fria.
+- Rock Vintage: parede bege-clara com amplificadores nas laterais.
+- Rock Festival: palco dourado iluminado com estrutura nas bordas.
+
+Todos os fundos das versões anteriores continuam disponíveis.
+
+O programa funciona localmente e não envia suas artes para nenhum servidor.
