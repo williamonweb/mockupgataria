@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080b09">
+  <title>Gataria Mockup Studio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand"><div class="catmark">G</div><div><strong>GATARIA</strong><span>MOCKUP STUDIO</span></div></div>
+    <nav class="steps">
+      <button class="step" data-target="upload"><b>1</b><span><strong>Carregar</strong><small>Carregue sua estampa</small></span></button>
+      <button class="step active" data-target="edit"><b>2</b><span><strong>Editar</strong><small>Ajuste sua estampa</small></span></button>
+      <button class="step" data-target="mockups"><b>3</b><span><strong>Mockups</strong><small>Gere e baixe</small></span></button>
+    </nav>
+    <div class="top-actions"><button class="icon-btn" title="Ajuda">?</button><button class="icon-btn" title="Configurações">⚙</button></div>
+  </header>
+
+  <main class="workspace">
+    <aside class="left-col" id="upload">
+      <section class="panel">
+        <div class="panel-head"><h2>CAMISETA</h2><p>Escolha o modelo</p></div>
+        <div class="shirt-grid">
+          <button class="shirt-option active" data-shirt="camiseta-preta-padrao.png" data-label="Preta"><img src="camiseta-preta-padrao.png" alt="Camiseta preta"><span>Preta</span><i>✓</i></button>
+          <button class="shirt-option" data-shirt="camiseta-branca-padrao.png" data-label="Branca"><img src="camiseta-branca-padrao.png" alt="Camiseta branca"><span>Branca</span><i>✓</i></button>
+        </div>
+        <label class="upload-secondary"><input id="shirtInput" type="file" accept="image/*">⌁ Carregar outra camiseta</label>
+        <button id="restoreShirtBtn" class="link-btn">Voltar para camiseta preta</button>
+        <img id="shirtThumb" src="camiseta-preta-padrao.png" alt="" hidden>
+        <div id="shirtColorLabel" hidden></div>
+      </section>
+
+      <section class="panel print-panel">
+        <div class="panel-head"><h2>SUA ESTAMPA</h2><p>PNG, JPG ou WEBP</p></div>
+        <label class="drop-zone" id="dropZone"><input id="printInput" type="file" accept="image/png,image/jpeg,image/webp"><b>☁</b><strong>Arraste sua arte aqui</strong><small>ou clique para selecionar</small></label>
+        <div id="printTools" class="hidden">
+          <div class="print-preview checker"><canvas id="previewCanvas" width="300" height="210"></canvas><span>✓</span></div>
+          <button id="restorePrintBtn" class="remove-print">Remover</button>
+          <button id="aiRemoveBtn" class="primary full">✦ Remover fundo com IA</button>
+          <button id="localRemoveBtn" class="ghost full">Recorte automático local</button>
+          <details><summary>Ajustar recorte local</summary>
+            <label class="range-row compact-range"><span>Tolerância <output id="toleranceOut">38</output></span><input id="tolerance" type="range" min="5" max="100" value="38"></label>
+            <label class="range-row compact-range"><span>Suavização <output id="featherOut">18</output></span><input id="feather" type="range" min="0" max="60" value="18"></label>
+          </details>
+        </div>
+      </section>
+    </aside>
+
+    <section class="editor" id="edit">
+      <div class="editor-toolbar"><div><button class="tool active">✋</button><button class="tool">↖</button></div><div class="zoom"><span>⌕</span><b>100%</b><button>⛶</button></div><div><button id="undoBtn" class="tool">↶</button><button id="redoBtn" class="tool">↷</button></div></div>
+      <div class="canvas-wrap"><canvas id="mockupCanvas" width="1200" height="1200"></canvas><div id="emptyState" class="empty-state"><b>✦</b><h3>Carregue sua estampa</h3><p>Escolha a camiseta e envie sua arte.</p></div></div>
+      <button id="autoFitBtn" class="auto-fit">✦ Ajuste automático</button>
+      <div class="status" id="status">Camiseta preta pronta.</div>
+    </section>
+
+    <aside class="right-col">
+      <section class="panel controls">
+        <div class="panel-head"><h2>AJUSTES DA ESTAMPA</h2><p>Refine sua arte</p></div>
+        <button id="straightenBtn" class="primary full">⌗ Endireitar</button><small class="hint">Restaura rotação e perspectivas</small>
+        <label class="range-row"><span>Tamanho <output id="scaleOut">43%</output></span><input id="scale" type="range" min="5" max="100" value="43"></label>
+        <label class="range-row"><span>Rotação <output id="rotationOut">0°</output></span><input id="rotation" type="range" min="-45" max="45" value="0"></label>
+        <label class="range-row"><span>Opacidade <output id="opacityOut">98%</output></span><input id="opacity" type="range" min="10" max="100" value="98"></label>
+        <div class="divider"></div><h3>Perspectiva</h3>
+        <label class="range-row"><span>Horizontal <output id="skewXOut">0°</output></span><input id="skewX" type="range" min="-30" max="30" value="0"></label>
+        <label class="range-row"><span>Vertical <output id="skewYOut">0°</output></span><input id="skewY" type="range" min="-20" max="20" value="0"></label>
+        <label class="range-row"><span>Curvatura <output id="curveOut">0%</output></span><input id="curve" type="range" min="0" max="30" value="0"></label>
+        <label class="range-row"><span>Integração no tecido <output id="blendOut">38%</output></span><input id="blend" type="range" min="0" max="100" value="38"></label>
+        <label class="range-row"><span>Realce do tecido <output id="foldsOut">20%</output></span><input id="folds" type="range" min="0" max="100" value="20"></label>
+        <div class="divider"></div><h3>Ações rápidas</h3>
+        <div class="quick-grid"><button id="centerBtn">⌖ Centralizar</button><button id="resetBtn">↺ Redefinir</button><button id="saveBtn">▣ Salvar projeto</button><label><input id="loadProjectInput" type="file" accept="application/json">▤ Abrir projeto</label></div>
+        <div class="export-box"><select id="exportSize"><option value="1200">PNG · 1200 × 1200</option><option value="2000" selected>PNG · 2000 × 2000</option><option value="3000">PNG · 3000 × 3000</option><option value="4000">PNG · 4000 × 4000</option></select><button id="downloadBtn" class="primary full">⇩ Baixar mockup</button></div>
+      </section>
+    </aside>
+
+    <section class="history panel" id="mockups"><div class="history-head"><div><h2>HISTÓRICO DE MOCKUPS</h2><p>Seus últimos mockups gerados</p></div><span id="historyCount">0</span></div><div id="historyGrid" class="history-grid"><div class="history-empty">Os mockups baixados aparecerão aqui.</div></div></section>
+  </main>
+</div>
+<script type="module" src="app.js"></script>
+</body></html>
